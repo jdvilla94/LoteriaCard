@@ -33,9 +33,9 @@ class previousCardsVC: UIViewController {
         addOrRemoveButtons()
         
         
-        print(currentIndex)
-        print(cardsFromPreviousArray)
-        print(cardsFromPreviousArray.count)
+//        print(currentIndex)
+//        print(cardsFromPreviousArray)
+//        print(cardsFromPreviousArray.count)
         
         
         
