@@ -24,7 +24,7 @@ class CardSelectionVC: UIViewController {
     var cardArray: [String:UIImage] = Deck.allValues
     var audioDict: [String:String] = audio.allValues
     var previousCardsArray: [UIImage] = []
-    var didYouReset: Bool = false
+    var isButtonEnabled = false
     
     var timer: Timer!
 
@@ -57,26 +57,26 @@ class CardSelectionVC: UIViewController {
     }
     
     func startTimer(){
+//        isButtonEnabled = true
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(showRandomImage), userInfo: nil, repeats: true)
+        buttons[0].alpha = 0.5
+        buttons[0].isEnabled = false
+
     }
     
-//    func playSound(){
-//        let url = Bundle.main.url(forResource: cardArray[0]., withExtension: "mp3")
-//        player = try! AVAudioPlayer(contentsOf: url!)
-//        player!.play()
-//    }
     
     @objc func showRandomImage() {
         if cardArray.count != 0{
             guard let randomCard = cardArray.randomElement() else{return}
             let image = randomCard.value
 //            guard let index = cardArray.firstIndex(of: randomCard) else{return}
-            cardImageView.image = image
-            previousCardsArray.append(image)
-            cardArray.removeValue(forKey: randomCard.key)
             guard let url = Bundle.main.url(forResource: randomCard.key, withExtension: "mp3") else {return}
             player = try! AVAudioPlayer(contentsOf: url)
             player.play()
+            cardImageView.image = image
+            previousCardsArray.append(image)
+            cardArray.removeValue(forKey: randomCard.key)
+
 
 //            cardImageView.image = randomCard
 //            cardArray.remove(at: index)
@@ -103,7 +103,7 @@ class CardSelectionVC: UIViewController {
                       self.previousCardsArray = []
 //                      print(self.cardArray.count)
                       self.startTimer()
-                      self.didYouReset = true
+ 
                   }
               )
 
@@ -121,8 +121,10 @@ class CardSelectionVC: UIViewController {
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
+        buttons[0].alpha = 1
+        buttons[0].isEnabled = true
         timer.invalidate()
-//        print(cardArray.count)
+
         
     }
     
@@ -131,7 +133,6 @@ class CardSelectionVC: UIViewController {
         cardArray = Deck.allValues
         cardImageView.image = nil
         startTimer()
-        didYouReset = true
         previousCardsArray = []
 //        print(cardArray.count)
     }
