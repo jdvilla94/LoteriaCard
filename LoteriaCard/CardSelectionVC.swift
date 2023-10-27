@@ -34,6 +34,7 @@ class CardSelectionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         cardImageView.layer.borderWidth = 2
         cardImageView.layer.borderColor = UIColor.black.cgColor
@@ -41,6 +42,9 @@ class CardSelectionVC: UIViewController {
         for button in buttons{
             button.layer.cornerRadius = 10
         }
+        
+        buttons[1].isEnabled = false
+        buttons[1].alpha = 0.5
         
         
     }
@@ -62,28 +66,30 @@ class CardSelectionVC: UIViewController {
         buttons[0].alpha = 0.5
         buttons[0].isEnabled = false
 
+
     }
     
     
     @objc func showRandomImage() {
-        if cardArray.count != 0{
+        if cardArray.count > 0{
             guard let randomCard = cardArray.randomElement() else{return}
             let image = randomCard.value
 //            guard let index = cardArray.firstIndex(of: randomCard) else{return}
-            guard let url = Bundle.main.url(forResource: randomCard.key, withExtension: "mp3") else {return}
-            player = try! AVAudioPlayer(contentsOf: url)
-            player.play()
+//            guard let url = Bundle.main.url(forResource: randomCard.key, withExtension: "mp3") else {return}
+//            player = try! AVAudioPlayer(contentsOf: url)
+//            player.play()
             cardImageView.image = image
             previousCardsArray.append(image)
             cardArray.removeValue(forKey: randomCard.key)
-
+            print("The card array length is \(cardArray.count)")
+            print(cardArray)
 
 //            cardImageView.image = randomCard
 //            cardArray.remove(at: index)
 //            previousCardsArray.append(randomCard)
 //            print(cardArray.count)
     //        cardImageView.image = cardArray.randomElement() ?? UIImage(named: "elAlacran")
-        }else{
+        }else if cardArray.count == 0{
             // Create an instance of UIAlertController
               let alertController = UIAlertController(
                   title: "THE END",
@@ -118,6 +124,8 @@ class CardSelectionVC: UIViewController {
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
         startTimer()
+        buttons[1].isEnabled = true
+        buttons[1].alpha = 1
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
@@ -129,11 +137,48 @@ class CardSelectionVC: UIViewController {
     }
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
+
         timer.invalidate()
-        cardArray = Deck.allValues
-        cardImageView.image = nil
-        startTimer()
-        previousCardsArray = []
+        // Create an instance of UIAlertController
+        let alertController = UIAlertController(
+              title: "RESTART",
+              message: "Are you sure you want to restart?.",
+              preferredStyle: .alert
+          )
+
+          // Create an action for the alert (e.g., an "OK" button)
+        let okAction = UIAlertAction(
+              title: "Restart",
+              style: .default,
+              handler: { action in
+                  // Handle the OK button action
+                  self.timer.invalidate()
+                  self.cardArray = Deck.allValues
+                  self.cardImageView.image = nil
+                  self.startTimer()
+                  self.previousCardsArray = []
+
+
+              }
+          )
+
+          // Add the action to the alert
+        alertController.addAction(okAction)
+        // Add a "Cancel" button with a handler
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Handle the "Cancel" button action here
+            self.startTimer()
+            self.dismiss(animated: true, completion: nil)
+        })
+
+          // Present the alert on the current view controller
+          present(alertController, animated: true, completion: nil)
+        
+//        timer.invalidate()
+//        cardArray = Deck.allValues
+//        cardImageView.image = nil
+//        startTimer()
+//        previousCardsArray = []
 //        print(cardArray.count)
     }
     
@@ -142,6 +187,8 @@ class CardSelectionVC: UIViewController {
             print("ITS NIL, CANT GO THERE")
         }else{
             timer.invalidate()
+            buttons[0].isEnabled = true
+            buttons[0].alpha = 1
             performSegue(withIdentifier: "toPreviousCards", sender: previousCardsArray)
         }
         
