@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373E55D62AECB05C003EB04B /* flipCard.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 373E55D52AECB05C003EB04B /* flipCard.mp3 */; };
 		37BDED692AE9FFD9009B0EEF /* previousCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDED682AE9FFD9009B0EEF /* previousCardCollectionCell.swift */; };
 		37BDED6C2AEAFA9E009B0EEF /* audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDED6B2AEAFA9E009B0EEF /* audio.swift */; };
 		37BDEE122AEB2B7B009B0EEF /* elVioloncello.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDDC2AEB2B79009B0EEF /* elVioloncello.mp3 */; };
@@ -29,7 +30,7 @@
 		37BDEE232AEB2B7B009B0EEF /* laSirena.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDED2AEB2B79009B0EEF /* laSirena.mp3 */; };
 		37BDEE242AEB2B7B009B0EEF /* elCorazon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDEE2AEB2B79009B0EEF /* elCorazon.mp3 */; };
 		37BDEE252AEB2B7B009B0EEF /* elAlacran.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDEF2AEB2B79009B0EEF /* elAlacran.mp3 */; };
-		37BDEE262AEB2B7B009B0EEF /* elBandalon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDF02AEB2B79009B0EEF /* elBandalon.mp3 */; };
+		37BDEE262AEB2B7B009B0EEF /* elBandolon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDF02AEB2B79009B0EEF /* elBandolon.mp3 */; };
 		37BDEE272AEB2B7B009B0EEF /* laRana.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDF12AEB2B79009B0EEF /* laRana.mp3 */; };
 		37BDEE282AEB2B7B009B0EEF /* elValiente.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDF22AEB2B79009B0EEF /* elValiente.mp3 */; };
 		37BDEE292AEB2B7B009B0EEF /* elBarril.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEDF32AEB2B79009B0EEF /* elBarril.mp3 */; };
@@ -62,7 +63,7 @@
 		37BDEE442AEB2B7B009B0EEF /* laMuerte.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEE0E2AEB2B7B009B0EEF /* laMuerte.mp3 */; };
 		37BDEE452AEB2B7B009B0EEF /* laCorona.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEE0F2AEB2B7B009B0EEF /* laCorona.mp3 */; };
 		37BDEE462AEB2B7B009B0EEF /* elArbol.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEE102AEB2B7B009B0EEF /* elArbol.mp3 */; };
-		37BDEE472AEB2B7B009B0EEF /* elsoldado.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEE112AEB2B7B009B0EEF /* elsoldado.mp3 */; };
+		37BDEE472AEB2B7B009B0EEF /* elSoldado.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEE112AEB2B7B009B0EEF /* elSoldado.mp3 */; };
 		37D9C12A2AE9595E00594C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9C1292AE9595E00594C3F /* AppDelegate.swift */; };
 		37D9C12C2AE9595E00594C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9C12B2AE9595E00594C3F /* SceneDelegate.swift */; };
 		37D9C1312AE9595E00594C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37D9C12F2AE9595E00594C3F /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		373E55D52AECB05C003EB04B /* flipCard.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flipCard.mp3; sourceTree = "<group>"; };
 		37BDED682AE9FFD9009B0EEF /* previousCardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previousCardCollectionCell.swift; sourceTree = "<group>"; };
 		37BDED6B2AEAFA9E009B0EEF /* audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = audio.swift; sourceTree = "<group>"; };
 		37BDEDDC2AEB2B79009B0EEF /* elVioloncello.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elVioloncello.mp3; sourceTree = "<group>"; };
@@ -116,7 +118,7 @@
 		37BDEDED2AEB2B79009B0EEF /* laSirena.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laSirena.mp3; sourceTree = "<group>"; };
 		37BDEDEE2AEB2B79009B0EEF /* elCorazon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elCorazon.mp3; sourceTree = "<group>"; };
 		37BDEDEF2AEB2B79009B0EEF /* elAlacran.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elAlacran.mp3; sourceTree = "<group>"; };
-		37BDEDF02AEB2B79009B0EEF /* elBandalon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elBandalon.mp3; sourceTree = "<group>"; };
+		37BDEDF02AEB2B79009B0EEF /* elBandolon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elBandolon.mp3; sourceTree = "<group>"; };
 		37BDEDF12AEB2B79009B0EEF /* laRana.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laRana.mp3; sourceTree = "<group>"; };
 		37BDEDF22AEB2B79009B0EEF /* elValiente.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elValiente.mp3; sourceTree = "<group>"; };
 		37BDEDF32AEB2B79009B0EEF /* elBarril.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elBarril.mp3; sourceTree = "<group>"; };
@@ -149,7 +151,7 @@
 		37BDEE0E2AEB2B7B009B0EEF /* laMuerte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laMuerte.mp3; sourceTree = "<group>"; };
 		37BDEE0F2AEB2B7B009B0EEF /* laCorona.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laCorona.mp3; sourceTree = "<group>"; };
 		37BDEE102AEB2B7B009B0EEF /* elArbol.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elArbol.mp3; sourceTree = "<group>"; };
-		37BDEE112AEB2B7B009B0EEF /* elsoldado.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elsoldado.mp3; sourceTree = "<group>"; };
+		37BDEE112AEB2B7B009B0EEF /* elSoldado.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elSoldado.mp3; sourceTree = "<group>"; };
 		37D9C1262AE9595E00594C3F /* LoteriaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoteriaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D9C1292AE9595E00594C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37D9C12B2AE9595E00594C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,9 +199,10 @@
 			children = (
 				37BDEDEF2AEB2B79009B0EEF /* elAlacran.mp3 */,
 				37BDEDDF2AEB2B79009B0EEF /* elApache.mp3 */,
+				373E55D52AECB05C003EB04B /* flipCard.mp3 */,
 				37BDEE102AEB2B7B009B0EEF /* elArbol.mp3 */,
 				37BDEE052AEB2B7A009B0EEF /* elArpa.mp3 */,
-				37BDEDF02AEB2B79009B0EEF /* elBandalon.mp3 */,
+				37BDEDF02AEB2B79009B0EEF /* elBandolon.mp3 */,
 				37BDEDF32AEB2B79009B0EEF /* elBarril.mp3 */,
 				37BDEDF72AEB2B7A009B0EEF /* elBorracho.mp3 */,
 				37BDEE022AEB2B7A009B0EEF /* elCamaron.mp3 */,
@@ -221,7 +224,7 @@
 				37BDEDE92AEB2B79009B0EEF /* elPescado.mp3 */,
 				37BDEDE82AEB2B79009B0EEF /* elPino.mp3 */,
 				37BDEDFF2AEB2B7A009B0EEF /* elSol.mp3 */,
-				37BDEE112AEB2B7B009B0EEF /* elsoldado.mp3 */,
+				37BDEE112AEB2B7B009B0EEF /* elSoldado.mp3 */,
 				37BDEDE62AEB2B79009B0EEF /* elTambor.mp3 */,
 				37BDEDF22AEB2B79009B0EEF /* elValiente.mp3 */,
 				37BDEE0B2AEB2B7B009B0EEF /* elVenado.mp3 */,
@@ -426,15 +429,16 @@
 				37BDEE342AEB2B7B009B0EEF /* elMusico.mp3 in Resources */,
 				37BDEE182AEB2B7B009B0EEF /* laEscalera.mp3 in Resources */,
 				37BDEE1B2AEB2B7B009B0EEF /* laBotella.mp3 in Resources */,
-				37BDEE472AEB2B7B009B0EEF /* elsoldado.mp3 in Resources */,
+				37BDEE472AEB2B7B009B0EEF /* elSoldado.mp3 in Resources */,
 				37BDEE442AEB2B7B009B0EEF /* laMuerte.mp3 in Resources */,
 				37BDEE242AEB2B7B009B0EEF /* elCorazon.mp3 in Resources */,
 				37BDEE1D2AEB2B7B009B0EEF /* elPajaro.mp3 in Resources */,
+				373E55D62AECB05C003EB04B /* flipCard.mp3 in Resources */,
 				37BDEE2B2AEB2B7B009B0EEF /* laSandia.mp3 in Resources */,
 				37BDEE322AEB2B7B009B0EEF /* laMano.mp3 in Resources */,
 				37BDEE1A2AEB2B7B009B0EEF /* elDiablito.mp3 in Resources */,
 				37BDEE252AEB2B7B009B0EEF /* elAlacran.mp3 in Resources */,
-				37BDEE262AEB2B7B009B0EEF /* elBandalon.mp3 in Resources */,
+				37BDEE262AEB2B7B009B0EEF /* elBandolon.mp3 in Resources */,
 				37BDEE3C2AEB2B7B009B0EEF /* elMundo.mp3 in Resources */,
 				37BDEE452AEB2B7B009B0EEF /* laCorona.mp3 in Resources */,
 				37BDEE352AEB2B7B009B0EEF /* elSol.mp3 in Resources */,

@@ -75,10 +75,13 @@ class CardSelectionVC: UIViewController {
             guard let randomCard = cardArray.randomElement() else{return}
             let image = randomCard.value
 //            guard let index = cardArray.firstIndex(of: randomCard) else{return}
-//            guard let url = Bundle.main.url(forResource: randomCard.key, withExtension: "mp3") else {return}
-//            player = try! AVAudioPlayer(contentsOf: url)
-//            player.play()
+            guard let flip = Bundle.main.url(forResource: "flipCard", withExtension: "mp3") else {return}
+            player = try! AVAudioPlayer(contentsOf: flip)
+            player.play()
             cardImageView.image = image
+            guard let url = Bundle.main.url(forResource: randomCard.key, withExtension: "mp3") else {return}
+            player = try! AVAudioPlayer(contentsOf: url)
+            player.play()
             previousCardsArray.append(image)
             cardArray.removeValue(forKey: randomCard.key)
             print("The card array length is \(cardArray.count)")
