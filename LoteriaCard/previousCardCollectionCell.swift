@@ -9,6 +9,7 @@ import UIKit
 
 class previousCardCollectionCell: UICollectionViewCell {
 
-//    @IBOutlet var card: UIImageView!
+
+    @IBOutlet var card: UIImageView!
     
 }

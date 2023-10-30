@@ -28,6 +28,7 @@ class previousCardsVC: UIViewController {
         for button in buttons{
             button.layer.cornerRadius = 10
         }
+        cardsFromPreviousArray.reverse()
         
         addCardToImageView()
         addOrRemoveButtons()
@@ -37,6 +38,7 @@ class previousCardsVC: UIViewController {
     
     
     func addCardToImageView(){
+
         for (index,image) in cardsFromPreviousArray.enumerated(){
             cardImageView.image = image
             currentIndex = index
@@ -58,8 +60,8 @@ class previousCardsVC: UIViewController {
             cardImageView.image = cardsFromPreviousArray[currentIndex]
             currentIndex += 1
             buttons[1].alpha = 1
-            print(currentIndex)
-            print(cardsFromPreviousArray.count)
+//            print(currentIndex)
+//            print(cardsFromPreviousArray.count)
             if currentIndex == cardsFromPreviousArray.count{
                 buttons[0].alpha = 0
             }
@@ -73,8 +75,8 @@ class previousCardsVC: UIViewController {
             currentIndex -= 1
             buttons[0].alpha = 1
             cardImageView.image = cardsFromPreviousArray[currentIndex]
-            print(currentIndex)
-            print(cardsFromPreviousArray.count)
+//            print(currentIndex)
+//            print(cardsFromPreviousArray.count)
             if currentIndex == 0{
                 buttons[1].alpha = 0
                 

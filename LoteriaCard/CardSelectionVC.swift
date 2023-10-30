@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 
 class CardSelectionVC: UIViewController {
+    
 
     @IBOutlet var cardImageView: UIImageView!
 //    @IBOutlet var startButton: UIButton!
@@ -17,6 +18,7 @@ class CardSelectionVC: UIViewController {
 //    @IBOutlet var previousCardsButton: UIButton!
     
     var player: AVAudioPlayer!
+    @IBOutlet var collectionView: UICollectionView!
     
 
     @IBOutlet var buttons: [UIButton]!
@@ -30,10 +32,11 @@ class CardSelectionVC: UIViewController {
 
     
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
 
         cardImageView.layer.borderWidth = 2
@@ -46,6 +49,8 @@ class CardSelectionVC: UIViewController {
         buttons[1].isEnabled = false
         buttons[1].alpha = 0.5
         
+        buttons[2].isEnabled = false
+        buttons[2].alpha = 0.5
         
     }
     
@@ -60,13 +65,12 @@ class CardSelectionVC: UIViewController {
         destVC.cardsFromPreviousArray = sender as? [UIImage]
     }
     
+
+    
     func startTimer(){
-//        isButtonEnabled = true
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(showRandomImage), userInfo: nil, repeats: true)
         buttons[0].alpha = 0.5
         buttons[0].isEnabled = false
-
-
     }
     
     
@@ -82,10 +86,11 @@ class CardSelectionVC: UIViewController {
             guard let url = Bundle.main.url(forResource: randomCard.key, withExtension: "mp3") else {return}
             player = try! AVAudioPlayer(contentsOf: url)
             player.play()
-            previousCardsArray.append(image)
+            previousCardsArray.insert(image, at: 0)
+//            previousCardsArray.append(image)
             cardArray.removeValue(forKey: randomCard.key)
-            print("The card array length is \(cardArray.count)")
-            print(cardArray)
+//            print("The card array length is \(cardArray.count)")
+//            print(cardArray)
 
 //            cardImageView.image = randomCard
 //            cardArray.remove(at: index)
@@ -129,9 +134,17 @@ class CardSelectionVC: UIViewController {
         startTimer()
         buttons[1].isEnabled = true
         buttons[1].alpha = 1
+        
+        buttons[2].isEnabled = true
+        buttons[2].alpha = 1
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
+        if sender.isEnabled{
+            sender.isEnabled = false
+            buttons[2].alpha = 0.5
+        }
+        
         buttons[0].alpha = 1
         buttons[0].isEnabled = true
         timer.invalidate()
@@ -180,6 +193,7 @@ class CardSelectionVC: UIViewController {
     }
     
     @IBAction func previousButtonTapped(_ sender: UIButton) {
+        
         if previousCardsArray.count == 0 {
             print("ITS NIL, CANT GO THERE")
         }else{
@@ -191,6 +205,31 @@ class CardSelectionVC: UIViewController {
         
         
     }
+    
+    
+}
+
+
+
+extension CardSelectionVC: UICollectionViewDataSource,UICollectionViewDelegate{
+        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        DispatchQueue.main.async {
+//            self.previousCardsArray.reverse()
+            self.collectionView.reloadData()
+        }
+        return previousCardsArray.count
+        
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! previousCardCollectionCell
+//        previousCardsArray.reverse()
+        cell.card.image = previousCardsArray[indexPath.row]
+        return cell
+    }
+
+
 }
 
 
