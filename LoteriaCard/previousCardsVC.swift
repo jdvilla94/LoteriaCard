@@ -33,12 +33,6 @@ class previousCardsVC: UIViewController {
         addOrRemoveButtons()
         
         
-//        print(currentIndex)
-//        print(cardsFromPreviousArray)
-//        print(cardsFromPreviousArray.count)
-        
-        
-        
     }
     
     
@@ -69,9 +63,7 @@ class previousCardsVC: UIViewController {
             if currentIndex == cardsFromPreviousArray.count{
                 buttons[0].alpha = 0
             }
-            //        }else{
-            //            buttons[0].alpha = 0
-            //        }
+
         }
     }
     

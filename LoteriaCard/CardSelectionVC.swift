@@ -177,12 +177,6 @@ class CardSelectionVC: UIViewController {
           // Present the alert on the current view controller
           present(alertController, animated: true, completion: nil)
         
-//        timer.invalidate()
-//        cardArray = Deck.allValues
-//        cardImageView.image = nil
-//        startTimer()
-//        previousCardsArray = []
-//        print(cardArray.count)
     }
     
     @IBAction func previousButtonTapped(_ sender: UIButton) {
