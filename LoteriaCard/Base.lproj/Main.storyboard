@@ -73,15 +73,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnJ-WR-RwC">
-                                <rect key="frame" x="71.666666666666686" y="714" width="250" height="50"/>
+                                <rect key="frame" x="71.666666666666686" y="714" width="115" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="5GG-lO-ims"/>
+                                    <constraint firstAttribute="width" constant="115" id="5GG-lO-ims"/>
                                     <constraint firstAttribute="height" constant="50" id="BGo-zz-cBG"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Previous Cards...">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Previous...">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -132,6 +132,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="duM-QD-zMD"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vd-z0-JTN">
+                                <rect key="frame" x="206.66666666666663" y="714" width="115" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="D8g-kO-ZjY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="N8H-bh-nw9"/>
+                                    <constraint firstAttribute="height" constant="50" id="g84-LR-IgD"/>
+                                    <constraint firstAttribute="width" constant="115" id="jfN-xo-pD0"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Left...">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="previousButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G4q-pj-Eok"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -139,6 +157,7 @@
                             <constraint firstItem="lnJ-WR-RwC" firstAttribute="leading" secondItem="1d4-bE-dBQ" secondAttribute="leading" id="1aY-yT-Ith"/>
                             <constraint firstItem="ddK-ct-7dg" firstAttribute="trailing" secondItem="Cqa-cd-GdZ" secondAttribute="trailing" id="5Lz-42-nYN"/>
                             <constraint firstItem="aQo-Dz-BpT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DeO-0y-Ffi"/>
+                            <constraint firstItem="9Vd-z0-JTN" firstAttribute="top" secondItem="ddK-ct-7dg" secondAttribute="bottom" constant="18" id="GkQ-3A-pPQ"/>
                             <constraint firstItem="xwj-Yg-IPf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-75" id="IKA-yE-NDL"/>
                             <constraint firstItem="ddK-ct-7dg" firstAttribute="top" secondItem="Cqa-cd-GdZ" secondAttribute="bottom" constant="20" id="IOJ-0U-Hz8"/>
                             <constraint firstItem="Cqa-cd-GdZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NWW-fT-xDa"/>
@@ -147,6 +166,7 @@
                             <constraint firstItem="xwj-Yg-IPf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fx2-Il-znZ"/>
                             <constraint firstItem="lnJ-WR-RwC" firstAttribute="top" secondItem="1d4-bE-dBQ" secondAttribute="bottom" constant="18" id="ipc-CN-ykG"/>
                             <constraint firstItem="xwj-Yg-IPf" firstAttribute="top" secondItem="aQo-Dz-BpT" secondAttribute="bottom" constant="20" id="iwW-aQ-emw"/>
+                            <constraint firstItem="9Vd-z0-JTN" firstAttribute="trailing" secondItem="ddK-ct-7dg" secondAttribute="trailing" id="pD0-Et-c91"/>
                             <constraint firstItem="1d4-bE-dBQ" firstAttribute="leading" secondItem="Cqa-cd-GdZ" secondAttribute="leading" id="uSf-Ou-RZE"/>
                         </constraints>
                     </view>
@@ -158,6 +178,7 @@
                         <outletCollection property="buttons" destination="ddK-ct-7dg" collectionClass="NSMutableArray" id="h7u-bE-I8X"/>
                         <outletCollection property="buttons" destination="1d4-bE-dBQ" collectionClass="NSMutableArray" id="5f4-M6-40L"/>
                         <outletCollection property="buttons" destination="lnJ-WR-RwC" collectionClass="NSMutableArray" id="QOl-0a-9YA"/>
+                        <outletCollection property="buttons" destination="9Vd-z0-JTN" collectionClass="NSMutableArray" id="VU7-Sw-BG8"/>
                         <segue destination="PIn-7B-leG" kind="show" identifier="toPreviousCards" id="GNF-YG-CSA"/>
                     </connections>
                 </viewController>

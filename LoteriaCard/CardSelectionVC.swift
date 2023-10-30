@@ -46,19 +46,43 @@ class CardSelectionVC: UIViewController {
             button.layer.cornerRadius = 10
         }
         
+        
+        DispatchQueue.main.async {
+            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
+            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
+
+        }
+        
         buttons[1].isEnabled = false
         buttons[1].alpha = 0.5
-        
+//        
+//        if previousCardsArray.count > 0 {
+//            buttons[2].isEnabled = true
+//            buttons[2].alpha = 1
+//        }else{
         buttons[2].isEnabled = false
         buttons[2].alpha = 0.5
+
+        
+        
+        buttons[3].isEnabled = false
+        buttons[3].alpha = 0.5
+        
+        buttons[4].isEnabled = false
+        buttons[4].alpha = 0.5
         
     }
     
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 //        timer.invalidate()
-//    }
+        DispatchQueue.main.async {
+            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
+            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
+
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC = segue.destination as! previousCardsVC
@@ -71,11 +95,18 @@ class CardSelectionVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(showRandomImage), userInfo: nil, repeats: true)
         buttons[0].alpha = 0.5
         buttons[0].isEnabled = false
+
     }
     
     
     @objc func showRandomImage() {
+        DispatchQueue.main.async {
+            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
+            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
+            
+        }
         if cardArray.count > 0{
+
             guard let randomCard = cardArray.randomElement() else{return}
             let image = randomCard.value
 //            guard let index = cardArray.firstIndex(of: randomCard) else{return}
@@ -132,11 +163,20 @@ class CardSelectionVC: UIViewController {
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
         startTimer()
+        
+
+        
         buttons[1].isEnabled = true
         buttons[1].alpha = 1
         
         buttons[2].isEnabled = true
         buttons[2].alpha = 1
+        
+        buttons[3].isEnabled = true
+        buttons[3].alpha = 1
+        
+        buttons[4].isEnabled = true
+        buttons[4].alpha = 1
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
@@ -169,6 +209,8 @@ class CardSelectionVC: UIViewController {
               handler: { action in
                   // Handle the OK button action
                   self.timer.invalidate()
+                  self.buttons[2].isEnabled = true
+                  self.buttons[2].alpha = 1
                   self.cardArray = Deck.allValues
                   self.cardImageView.image = nil
                   self.startTimer()
@@ -193,6 +235,11 @@ class CardSelectionVC: UIViewController {
     }
     
     @IBAction func previousButtonTapped(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
+            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
+            
+        }
         
         if previousCardsArray.count == 0 {
             print("ITS NIL, CANT GO THERE")
