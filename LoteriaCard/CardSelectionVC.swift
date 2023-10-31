@@ -12,10 +12,6 @@ class CardSelectionVC: UIViewController {
     
 
     @IBOutlet var cardImageView: UIImageView!
-//    @IBOutlet var startButton: UIButton!
-//    @IBOutlet var stopButton: UIButton!
-//    @IBOutlet var restartButton: UIButton!
-//    @IBOutlet var previousCardsButton: UIButton!
     
     var player: AVAudioPlayer!
     @IBOutlet var collectionView: UICollectionView!
@@ -27,18 +23,32 @@ class CardSelectionVC: UIViewController {
     var audioDict: [String:String] = audio.allValues
     var previousCardsArray: [UIImage] = []
     var isButtonEnabled = false
-    
+        
     var timer: Timer!
+    
+    var deckCount = 54
+    var currentCount = 0
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("The deck count is \(deckCount) and the current count is \(currentCount)")
+        DispatchQueue.main.async {
+            self.buttons[3].titleLabel?.text = "Previous: \(self.currentCount)"
+            self.buttons[4].titleLabel?.text = "Left: \(self.deckCount)"
+        }
+      
+    }
 
-    
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+        DispatchQueue.main.async {
+            self.buttons[3].titleLabel?.text = "Previous: \(self.currentCount)"
+            self.buttons[4].titleLabel?.text = "Left: \(self.deckCount)"
+        }
         
-
         cardImageView.layer.borderWidth = 2
         cardImageView.layer.borderColor = UIColor.black.cgColor
         cardImageView.layer.cornerRadius = 10
@@ -46,25 +56,12 @@ class CardSelectionVC: UIViewController {
             button.layer.cornerRadius = 10
         }
         
-        
-        DispatchQueue.main.async {
-            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
-            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
-
-        }
-        
         buttons[1].isEnabled = false
         buttons[1].alpha = 0.5
-//        
-//        if previousCardsArray.count > 0 {
-//            buttons[2].isEnabled = true
-//            buttons[2].alpha = 1
-//        }else{
+
         buttons[2].isEnabled = false
         buttons[2].alpha = 0.5
 
-        
-        
         buttons[3].isEnabled = false
         buttons[3].alpha = 0.5
         
@@ -72,43 +69,32 @@ class CardSelectionVC: UIViewController {
         buttons[4].alpha = 0.5
         
     }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        timer.invalidate()
-        DispatchQueue.main.async {
-            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
-            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
 
-        }
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destVC = segue.destination as! previousCardsVC
-        destVC.cardsFromPreviousArray = sender as? [UIImage]
+        if segue.identifier == "toPreviousCards"{
+            let destVC = segue.destination as! previousCardsVC
+            destVC.cardsFromPreviousArray = sender as? [UIImage]
+            destVC.deckCount = 54 - previousCardsArray.count
+            destVC.currentCount = previousCardsArray.count
+        }
+
     }
     
 
-    
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(showRandomImage), userInfo: nil, repeats: true)
         buttons[0].alpha = 0.5
         buttons[0].isEnabled = false
-
     }
     
-    
     @objc func showRandomImage() {
-        DispatchQueue.main.async {
-            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
-            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
-            
-        }
+    
         if cardArray.count > 0{
-
             guard let randomCard = cardArray.randomElement() else{return}
             let image = randomCard.value
+           
 //            guard let index = cardArray.firstIndex(of: randomCard) else{return}
             guard let flip = Bundle.main.url(forResource: "flipCard", withExtension: "mp3") else {return}
             player = try! AVAudioPlayer(contentsOf: flip)
@@ -120,15 +106,17 @@ class CardSelectionVC: UIViewController {
             previousCardsArray.insert(image, at: 0)
 //            previousCardsArray.append(image)
             cardArray.removeValue(forKey: randomCard.key)
-//            print("The card array length is \(cardArray.count)")
-//            print(cardArray)
+            currentCount += 1
+            deckCount -= 1
+            
+            DispatchQueue.main.async {
+                self.buttons[3].titleLabel?.text = "Previous: \(self.currentCount)"
+                self.buttons[4].titleLabel?.text = "Left: \(self.deckCount)"
+            }
+//            buttons[3].titleLabel?.text = "Previous: \(previousCardsArray.count)"
+//            buttons[4].titleLabel?.text = "Left: \(54 - previousCardsArray.count)"
 
-//            cardImageView.image = randomCard
-//            cardArray.remove(at: index)
-//            previousCardsArray.append(randomCard)
-//            print(cardArray.count)
-    //        cardImageView.image = cardArray.randomElement() ?? UIImage(named: "elAlacran")
-        }else if cardArray.count == 0{
+        }else{
             // Create an instance of UIAlertController
               let alertController = UIAlertController(
                   title: "THE END",
@@ -143,12 +131,12 @@ class CardSelectionVC: UIViewController {
                   handler: { action in
                       // Handle the OK button action
                       self.timer.invalidate()
+                      self.buttons[2].isEnabled = true
+                      self.buttons[2].alpha = 1
                       self.cardArray = Deck.allValues
                       self.cardImageView.image = nil
-                      self.previousCardsArray = []
-//                      print(self.cardArray.count)
                       self.startTimer()
- 
+                      self.previousCardsArray = []
                   }
               )
 
@@ -164,8 +152,6 @@ class CardSelectionVC: UIViewController {
     @IBAction func startButtonTapped(_ sender: UIButton) {
         startTimer()
         
-
-        
         buttons[1].isEnabled = true
         buttons[1].alpha = 1
         
@@ -177,6 +163,7 @@ class CardSelectionVC: UIViewController {
         
         buttons[4].isEnabled = true
         buttons[4].alpha = 1
+        
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
@@ -188,12 +175,10 @@ class CardSelectionVC: UIViewController {
         buttons[0].alpha = 1
         buttons[0].isEnabled = true
         timer.invalidate()
-
-        
     }
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
-
+        
         timer.invalidate()
         // Create an instance of UIAlertController
         let alertController = UIAlertController(
@@ -213,10 +198,9 @@ class CardSelectionVC: UIViewController {
                   self.buttons[2].alpha = 1
                   self.cardArray = Deck.allValues
                   self.cardImageView.image = nil
-                  self.startTimer()
                   self.previousCardsArray = []
-
-
+                  self.startTimer()
+  
               }
           )
 
@@ -236,27 +220,20 @@ class CardSelectionVC: UIViewController {
     
     @IBAction func previousButtonTapped(_ sender: UIButton) {
         DispatchQueue.main.async {
-            self.buttons[4].titleLabel?.text = "Left: \(Deck.allValues.count - self.previousCardsArray.count)"
-            self.buttons[3].titleLabel?.text = "Previous \(self.previousCardsArray.count)"
-            
+            self.buttons[3].titleLabel?.text = "Previous: \(self.currentCount)"
+            self.buttons[4].titleLabel?.text = "Left: \(self.deckCount)"
         }
-        
         if previousCardsArray.count == 0 {
             print("ITS NIL, CANT GO THERE")
         }else{
             timer.invalidate()
             buttons[0].isEnabled = true
             buttons[0].alpha = 1
+            
             performSegue(withIdentifier: "toPreviousCards", sender: previousCardsArray)
         }
-        
-        
     }
-    
-    
 }
-
-
 
 extension CardSelectionVC: UICollectionViewDataSource,UICollectionViewDelegate{
         
@@ -266,7 +243,6 @@ extension CardSelectionVC: UICollectionViewDataSource,UICollectionViewDelegate{
             self.collectionView.reloadData()
         }
         return previousCardsArray.count
-        
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -275,9 +251,4 @@ extension CardSelectionVC: UICollectionViewDataSource,UICollectionViewDelegate{
         cell.card.image = previousCardsArray[indexPath.row]
         return cell
     }
-
-
 }
-
-
-

@@ -81,7 +81,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Previous...">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="12"/>
                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -141,10 +141,10 @@
                                     <constraint firstAttribute="height" constant="50" id="g84-LR-IgD"/>
                                     <constraint firstAttribute="width" constant="115" id="jfN-xo-pD0"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Left...">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Left: 54">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="13"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
@@ -177,11 +177,28 @@
                         <outletCollection property="buttons" destination="lnJ-WR-RwC" collectionClass="NSMutableArray" id="QOl-0a-9YA"/>
                         <outletCollection property="buttons" destination="9Vd-z0-JTN" collectionClass="NSMutableArray" id="VU7-Sw-BG8"/>
                         <segue destination="PIn-7B-leG" kind="show" identifier="toPreviousCards" id="GNF-YG-CSA"/>
+                        <segue destination="z6m-fi-hTv" kind="show" identifier="toModal" id="FQR-Mr-onM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ykw-Jc-29I">
+            <objects>
+                <viewController id="z6m-fi-hTv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u2S-wO-FTD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="O1E-ZY-P5k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EDB-Ig-2Gt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kjc-cu-jHp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1473" y="677"/>
         </scene>
         <!--Previous Cards-->
         <scene sceneID="sGp-Ug-o3s">

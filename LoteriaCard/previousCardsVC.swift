@@ -13,9 +13,10 @@ class previousCardsVC: UIViewController {
     @IBOutlet var cardImageView: UIImageView!
     var currentIndex: Int = 0
     
-    
-    
     @IBOutlet var buttons: [UIButton]!
+    
+    var deckCount = 0
+    var currentCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +33,7 @@ class previousCardsVC: UIViewController {
         
         addCardToImageView()
         addOrRemoveButtons()
-        
-        
+    
     }
     
     
@@ -42,7 +42,6 @@ class previousCardsVC: UIViewController {
         for (index,image) in cardsFromPreviousArray.enumerated(){
             cardImageView.image = image
             currentIndex = index
-            
         }
     }
     
@@ -65,43 +64,17 @@ class previousCardsVC: UIViewController {
             if currentIndex == cardsFromPreviousArray.count{
                 buttons[0].alpha = 0
             }
-
         }
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         if currentIndex >= 0{
-            
             currentIndex -= 1
             buttons[0].alpha = 1
             cardImageView.image = cardsFromPreviousArray[currentIndex]
-//            print(currentIndex)
-//            print(cardsFromPreviousArray.count)
             if currentIndex == 0{
                 buttons[1].alpha = 0
-                
             }
-            
         }
     }
 }
-
-//extension previousCardsVC: UICollectionViewDataSource,UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return cardsFromPreviousArray!.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! previousCardCollectionCell
-//        cell.card.image = cardsFromPreviousArray![indexPath.row]
-//        return cell
-//    }
-//    
-//    
-//}
-
-
-    
-    
-    
-
